@@ -33,7 +33,7 @@ const FooterComp = () => {
                             <ul>
                                 <li>Home</li>
                                 <li>Blog</li>
-                                <li>FAQ's</li>
+                                <li>FAQ&apos;s</li>
                                 <li>Contact Us</li>
                                 <li>Legal</li>
                                 <li>Term & Conditions</li>
