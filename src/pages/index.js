@@ -3,20 +3,25 @@ import Script from 'next/script'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link';
 import fs from "fs";
+import path from 'path';
+import matter from 'gray-matter';
 
 export const getStaticProps = async () => {
   const files = fs.readdirSync("posts");
+  const getMarkdownWithMetadata = files.map(filename => matter(fs.readFileSync(path.join("posts", filename).toString())));
+  // console.log(getMarkdownWithMetadata);
   return {
     props: {
-      slugs: files.map(filename => filename.replace(".md", ""))
+      posts: JSON.stringify(getMarkdownWithMetadata)
     }
   };
 };
 
 
-export default function Home({slugs}) {
+export default function Home({posts}) {
+  posts = JSON.parse(posts);
 
-  if(!slugs || slugs.length === 0) {
+  if(!posts || posts.length === 0) {
     return <>
       <Head>
         <title>Blog Posts</title>
@@ -41,11 +46,11 @@ export default function Home({slugs}) {
       </Head>
       <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></Script>
       <main className={`container blog-page`}>
-        {slugs && slugs.map((post) => {
-          return <Link href={"/blog-posts/"+post} key={post}>
+        {posts && posts.map(({data}) => {
+          return <Link href={"/blog-posts/"+data.slug} key={data.slug}>
             <div className={`${styles["blog-post"]} shadow-sm`}>
-              <h4>{post}</h4>
-              <p className={styles.time}>Sometime</p>
+              <h4>{data.title}</h4>
+              <p className={styles.time}>{new Date(data.date).toLocaleDateString()}</p>
               <p className={styles.description}>Some description</p>
             </div>
           </Link>

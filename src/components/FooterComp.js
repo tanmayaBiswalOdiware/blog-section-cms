@@ -10,7 +10,7 @@ const FooterComp = () => {
                         <div className="about_company" data-aos="fade-up"
                             data-aos-duration="3000">
                             <div className="logo">
-                                <Image src="/images/group_copy_2.png" alt="" />
+                                <Image src="/images/group_copy_2.png" alt="" width={26} height={50} />
                                 <span>PracticeKea</span>
                             </div>
 
@@ -23,7 +23,7 @@ const FooterComp = () => {
 
                             <div className="playstore_logo" data-aos="fade-up"
                                 data-aos-duration="3000">
-                                <Image src="/images/bitmap.png" alt="" />
+                                <Image src="/images/bitmap.png" alt="" width={186} height={55} />
                             </div>
                         </div>
                     </div>

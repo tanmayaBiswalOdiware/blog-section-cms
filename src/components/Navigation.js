@@ -7,7 +7,7 @@ const Navigation = () => {
             <div className="container">
                 <nav className="navbar nav_bar navbar-expand-lg navbar-light pl-0 pr-0">
                     <a className="navbar-brand" href="#"> 
-                        <Image className='mr-2' width="20px" src="images/group_copy_222.png" alt=""/>
+                        <Image className='mr-2' width={20} height={37.9} src="/images/group_copy_222.png" alt=""/>
                         Practice<span>Kea</span>
                     </a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse"

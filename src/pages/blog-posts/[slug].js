@@ -7,7 +7,7 @@ import styles from '@/styles/Home.module.css'
 
 export const getStaticPaths = async () => {
     const files = fs.readdirSync("posts");
-    console.log("files: ", files);
+    // console.log("files: ", files);
     const paths = files.map(filename => ({
       params: {
         slug: filename.replace(".md", "")
@@ -33,20 +33,22 @@ export const getStaticPaths = async () => {
     return {
       props: {
         htmlString,
-        data: parsedMarkdown.data
+        data: JSON.stringify(parsedMarkdown.data)
       }
     };
   };
 
 const Id = ({htmlString, data}) => {
-    return (
-        <div className='container mt-4 mb-4 blog-content'>
-            <h1>Sometitle</h1>
-            <p className={styles.time}>By Someone</p>
-            <p className={styles.time}>Something</p>
-            <div className={styles.content} dangerouslySetInnerHTML={{__html: htmlString}} />
-        </div>
-    );
+  data = JSON.parse(data);
+  console.log(data);
+  return (
+      <div className='container mt-4 mb-4 blog-content'>
+          <h1>{data.title}</h1>
+          {/* <p className={styles.time}>By {findAuthor(data.author)}</p> */}
+          <p className={styles.time}>{new Date(data.date).toLocaleDateString()}</p>
+          <div className={styles.content} dangerouslySetInnerHTML={{__html: htmlString}} />
+      </div>
+  );
 }
 
 export default Id;
