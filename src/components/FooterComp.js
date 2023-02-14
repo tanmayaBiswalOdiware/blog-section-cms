@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const FooterComp = () => {
@@ -9,7 +10,7 @@ const FooterComp = () => {
                         <div className="about_company" data-aos="fade-up"
                             data-aos-duration="3000">
                             <div className="logo">
-                                <img src="/images/group_copy_2.png" alt="" />
+                                <Image src="/images/group_copy_2.png" alt="" />
                                 <span>PracticeKea</span>
                             </div>
 
@@ -22,7 +23,7 @@ const FooterComp = () => {
 
                             <div className="playstore_logo" data-aos="fade-up"
                                 data-aos-duration="3000">
-                                <img src="/images/bitmap.png" alt="" />
+                                <Image src="/images/bitmap.png" alt="" />
                             </div>
                         </div>
                     </div>
